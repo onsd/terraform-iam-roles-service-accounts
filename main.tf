@@ -10,8 +10,6 @@ locals {
     Terraform   = "true"
     Environment = "Cluster"
   }
-
-  # iam_path = ?
   cluster_name    = "next-cluster"
-  cluster_version = "1.13" # 最新は1.15 1.12で固定??
+  cluster_version = "1.13"
 }

@@ -51,7 +51,7 @@ resource "aws_launch_template" "eks_node" {
   block_device_mappings {
     device_name = "/dev/xvda"
     ebs {
-      volume_size           = 20 # AMIイメージを読み込む場所
+      volume_size           = 20
       delete_on_termination = true
     }
   }
@@ -77,7 +77,6 @@ resource "aws_iam_instance_profile" "eks-node" {
   name_prefix = "${local.cluster_name}-node-"
   role        = "${aws_iam_role.eks-node.id}"
 
-  # path = "${local.iam_path}"
 }
 
 data "aws_ami" "eks-node" {
