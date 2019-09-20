@@ -1,3 +1,14 @@
+locals {
+  serviceaccount = <<EOF
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: s3-sa
+  namespace: default
+  eks.amazonaws.com/role-arn=${aws_iam_role.s3_service_account.arn}
+EOF
+}
+
 resource "aws_iam_role_policy" "vault_unseal_service_account" {
   policy = "${data.aws_iam_policy_document.s3_service_account.json}"
   role   = "${aws_iam_role.s3_service_account.name}"
